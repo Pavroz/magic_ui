@@ -78,7 +78,7 @@ jobs:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v5
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@3 # НО ЭТО НЕ ТОЧНО, ВОЗМОЖНО ВЕРСИЯ 3
+        uses: actions/upload-pages-artifact@v3 # НО ЭТО НЕ ТОЧНО, ВОЗМОЖНО ВЕРСИЯ 3
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
