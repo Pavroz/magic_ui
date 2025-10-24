@@ -5,15 +5,17 @@ on:
   workflow_dispatch:
     inputs:
       deployment_target:
-        description: choose tests set
+        description: Choose target
         required: true
         type: choice
-        default: smoke
+        default: second_test
         options:
-          - smoke
-          - regression
-          - extended
-          - all
+          - first_test
+          - second_test
+#          - smoke
+#          - regression
+#          - extended
+#          - all
 
 jobs: 
   run-tests:
@@ -26,7 +28,11 @@ jobs:
         uses: actions/setup-python@v6 # Вводим actions/setup-python@v2 в гугле и смотрим на github актуальную версию
         with:
           python-version: '3.13'
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run tests
+      - name: first_test
+        run: pytest
+      - name: second_test
         run: pytest
