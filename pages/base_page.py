@@ -1,5 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
-
+import allure
 
 
 class BasePage:
@@ -11,10 +11,11 @@ class BasePage:
         self.driver = driver
 
     def open_page(self):
-        if self.page_url:
-            self.driver.get(f'{self.base_url}{self.page_url}')
-        else:
-            self.driver.get(f'{self.base_url}')
+        with allure.step('Open the Page'):
+            if self.page_url:
+                self.driver.get(f'{self.base_url}{self.page_url}')
+            else:
+                self.driver.get(f'{self.base_url}')
 
     def find(self, locator: tuple):
         return self.driver.find_element(*locator)
